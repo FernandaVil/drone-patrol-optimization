@@ -1,0 +1,21 @@
+# --- Jupyter Notebooks ---
+# Estas carpetas se crean solas al ejecutar celdas y solo ensucian el historial
+.ipynb_checkpoints/
+
+# --- Python General ---
+# Archivos compilados que no sirven en otras máquinas
+__pycache__/
+*.pyc
+
+# --- Datos y Entornos ---
+# Importante: No subir la carpeta de datos crudos (mapas pesados)
+data/
+# Por si acaso creas un entorno local
+env/
+venv/
+.env
+
+# --- Sistema Operativo e IDEs ---
+.DS_Store
+.vscode/
+.idea/
