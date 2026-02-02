@@ -1,7 +1,7 @@
 # --- Jupyter Notebooks ---
 # Estas carpetas se crean solas al ejecutar celdas y solo ensucian el historial
 .ipynb_checkpoints/
-
+cache/
 # --- Python General ---
 # Archivos compilados que no sirven en otras máquinas
 __pycache__/
