@@ -103,11 +103,14 @@ Este proyecto utiliza `PySCIPOpt`, que requiere la instalación del solver **SCI
 ## Estructura del proyecto
   ```bash
       drone-patrol-optimization/
+      ├── assets/
+      │   ├── demo_mision_iguazu.gif
+      │   └── grafo_tsp_fallido.png
       ├── notebooks/
       │   ├── 01_Analisis_Factibilidad_TSP.ipynb
       │   └── 02_Optimizacion_Mision_OP.ipynb
       ├── output/
-      │   └── mision_iguazu_final.html  <-- Mapa interactivo
+      │   └── mision_iguazu__dashboard_final.html  <-- Mapa interactivo
       ├── requirements.txt
       └── README.md
    ```
