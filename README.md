@@ -4,11 +4,13 @@
 
 This project applies **Operations Research** and **Graph Theory** techniques to design autonomous flight paths in Iguazú National Park. Using Mixed-Integer Programming (MIP), the system transforms a logistically unfeasible problem (total coverage) into a strategic mission that maximizes surveillance of critical hotspots under strict battery constraints.
 
-> 🇪spañol [Versión en Español](./README.es.md)
+> 🇪🇸 [Versión en Español](./README.es.md)
 
 ![Optimal Route Demo](./assets/demo_mision_iguazu.gif)
 
 *Visualization of the optimal route solving the 'Orienteering Problem'. The algorithm prioritizes 'Hotspots' (red) and discards low-value nodes to comply with the 40-minute flight autonomy.*
+
+---
 
 ## Context and Problem: The Fight Against Poaching
 Iguazú National Park faces constant threats from poaching. Hunters utilize known strategic points called **saleros** (mineral salt licks where animals gather) and **picadas** (rudimentary trails opened in the jungle) for their illegal activities. 
@@ -76,6 +78,8 @@ The model generated an operational flight plan that validates the use of drones 
 
 This repository is designed to be read sequentially. The notebooks contain an extended technical narrative, mathematical justifications, and step-by-step documented source code.
 
+---
+
 ## How to run this project locally
 
 ### 1. Prerequisites
@@ -113,15 +117,13 @@ This project uses `PySCIPOpt`, which requires the **SCIP** solver installation (
       ├── requirements.txt
       └── README.md
    ```
-
+---
 ## Next steps: Stage 2 - Dynamic complexity
 This first stage addressed static planning (Offline). The next phase of the project, currently under design, will address the changing reality of the rainforest:
 
 * **Dynamic Nodes (Event-Driven):** What if a camera trap detects movement mid-flight? The system must recalculate the optimal route in real-time based on sensor alerts.
 * **Terrain Risk ($R_{ij}$):** Flying over a trail is not the same as flying over virgin jungle. We will incorporate a risk cost matrix to penalize trajectories where equipment recovery would be impossible.
 * **Multi-objective Function:** We will refine the MIP algorithm to not only maximize the score but also minimize flight time as a secondary objective. This ensures the mathematically fastest route among multiple options with the same score, avoiding sub-optimal solutions in more complex scenarios.
-
-
 
 ---
 
