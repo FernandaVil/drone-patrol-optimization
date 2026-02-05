@@ -134,7 +134,6 @@ Esta primera etapa resolvió la planificación estática (Offline). La siguiente
 Para asegurar la validez técnica del modelo de optimización y la precisión de los cálculos geoespaciales, se consultaron las siguientes fuentes:
 
 * **Orienteering problem:**  Gunawan, A., Lau, H. C., & Vansteenwegen, P. (2016). *Orienteering Problem: A survey of recent variants, solution approaches and applications*. European Journal of Operational Research. [DOI: 10.1016/j.ejor.2016.04.059](https://doi.org/10.1016/j.ejor.2016.04.059)
-* **Restricciones de eliminación de subtours (MTZ):** * Miller, C. E., Tucker, A. W., & Zemlin, R. A. (1960). *Integer Programming Formulation of Traveling Salesman Problems*. Journal of the ACM (JACM). (Fundamento matemático para las restricciones de secuencia utilizadas en este proyecto).
 * **Cálculo de distancias sobre la esfera (Haversine):** * Sinnott, R. W. (1984). *Virtues of the Haversine*. Sky and Telescope. (Base matemática para la medición de distancias geodésicas en el Sector Apepú).
 * **Cartografía y contexto regional:**
     * Datos obtenidos mediante el cruce de información del **Instituto Geográfico Nacional (IGN Argentina)** y reportes de patrullaje del Parque Nacional Iguazú.
