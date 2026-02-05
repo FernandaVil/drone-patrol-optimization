@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3afb3b37dea336e785046ce758a1319d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-textpath@1.2.3/leaflet.textpath.min.js"></script>
+</head>
+<body>
+    
+    
+    <div style="position: fixed; top: 65px; left: 95px; width: 350px;
+                z-index:9999; font-family: 'Arial', sans-serif; font-size:16px;
+                background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px;
+                box-shadow: 4px 4px 12px rgba(0,0,0,0.2); border-left: 8px solid #e74c3c;">
+        <h3 style="margin:0 0 15px 0; color:#2c3e50; font-size:18px;">Métricas de optimización</h3>
+        <table style="width:100%; border-spacing: 0 8px;">
+            <tr><td><b>Estado:</b></td> <td style="color:#27ae60; font-weight:bold;">Ruta óptima</td></tr>
+            <tr><td><b>Autonomía:</b></td> <td>36.99 / 40.00 min</td></tr>
+            <tr><td><b>Score de vigilancia:</b></td> <td>350 pts </td></tr>
+            <tr><td><b>Nodos visitados:</b></td> <td>6 /10</td></tr>
+        </table>
+    </div>
+    
+    
+    <div style="position: fixed; bottom: 65px; left: 95px; width: 350px;
+                z-index:9999; font-family: 'Arial', sans-serif; font-size:16px;
+                background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px;
+                box-shadow: 4px 4px 12px rgba(0,0,0,0.2);">
+        <b style="display:block; margin-bottom:12px; font-size:16px; color:#2c3e50;">Referencias</b>
+        <div style="margin-bottom:8px; display:flex; align-items:center;">
+            <span style="width:16px; height:16px; border-radius:50%; display:inline-block; margin-right:12px; background:#2ecc71;"></span> Base seccional (Apepú)
+        </div>
+        <div style="margin-bottom:8px; display:flex; align-items:center;">
+            <span style="width:16px; height:16px; border-radius:50%; display:inline-block; margin-right:12px; background:#e74c3c;"></span> Punto de interés (Hotspot)
+        </div>
+        <div style="margin-bottom:8px; display:flex; align-items:center;">
+            <span style="width:16px; height:16px; border-radius:50%; display:inline-block; margin-right:12px; background:#3498db;"></span> Acceso / Picada
+        </div>
+        <div style="margin-bottom:8px; display:flex; align-items:center;">
+            <span style="width:16px; height:16px; border-radius:50%; display:inline-block; margin-right:12px; background:#f39c12;"></span> Punto de tránsito
+        </div>
+        
+    </div>
+    
+    
+            <div class="folium-map" id="map_3afb3b37dea336e785046ce758a1319d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3afb3b37dea336e785046ce758a1319d = L.map(
+                "map_3afb3b37dea336e785046ce758a1319d",
+                {
+                    center: [-25.6354823, -54.2397298],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_211b9ac5b2422293e2fd9b134b98de5a = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_211b9ac5b2422293e2fd9b134b98de5a.addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+            var circle_marker_dff7c934a557c7692177c552be03093f = L.circleMarker(
+                [-25.56347, -54.29574],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_d7ff73069bb672844141072c0e76c7c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c8cf84e3c23dbd45f3c768cea093f5c = $(`<div id="html_3c8cf84e3c23dbd45f3c768cea093f5c" style="width: 100.0%; height: 100.0%;"><b>Seccional Apepú</b><br>Tipo: BASE<br>Score: 0</div>`)[0];
+                popup_d7ff73069bb672844141072c0e76c7c6.setContent(html_3c8cf84e3c23dbd45f3c768cea093f5c);
+            
+        
+
+        circle_marker_dff7c934a557c7692177c552be03093f.bindPopup(popup_d7ff73069bb672844141072c0e76c7c6)
+        ;
+
+        
+    
+    
+            var circle_marker_41a11eca53ce9e8d148c8ef800b39034 = L.circleMarker(
+                [-25.680885, -54.1623],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_046cf1e2f552c8d9fb3ef771aac402a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66714b0b7051b61f686ea0082e0d2c40 = $(`<div id="html_66714b0b7051b61f686ea0082e0d2c40" style="width: 100.0%; height: 100.0%;"><b>Seccional Yacu-í</b><br>Tipo: BASE<br>Score: 0</div>`)[0];
+                popup_046cf1e2f552c8d9fb3ef771aac402a2.setContent(html_66714b0b7051b61f686ea0082e0d2c40);
+            
+        
+
+        circle_marker_41a11eca53ce9e8d148c8ef800b39034.bindPopup(popup_046cf1e2f552c8d9fb3ef771aac402a2)
+        ;
+
+        
+    
+    
+            var circle_marker_7113cfc3e8864b3dc2fb7ab819c1f217 = L.circleMarker(
+                [-25.677424, -54.227024],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_d50dbce7eecbf0e06f5c61434fb42368 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8412cc5ba4e5156fe64f1abd759e3e02 = $(`<div id="html_8412cc5ba4e5156fe64f1abd759e3e02" style="width: 100.0%; height: 100.0%;"><b>Control 101 Central</b><br>Tipo: ACCESO<br>Score: 40</div>`)[0];
+                popup_d50dbce7eecbf0e06f5c61434fb42368.setContent(html_8412cc5ba4e5156fe64f1abd759e3e02);
+            
+        
+
+        circle_marker_7113cfc3e8864b3dc2fb7ab819c1f217.bindPopup(popup_d50dbce7eecbf0e06f5c61434fb42368)
+        ;
+
+        
+    
+    
+            var circle_marker_8eaa6bb25c58eacc000941630db2b8ab = L.circleMarker(
+                [-25.587602, -54.230119],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_f750ec9867cfc5e053727f281c059ef6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3832c8534e4939b7e50b0d4a29b2732 = $(`<div id="html_f3832c8534e4939b7e50b0d4a29b2732" style="width: 100.0%; height: 100.0%;"><b>Desembocadura A. León</b><br>Tipo: OBJETIVO<br>Score: 85</div>`)[0];
+                popup_f750ec9867cfc5e053727f281c059ef6.setContent(html_f3832c8534e4939b7e50b0d4a29b2732);
+            
+        
+
+        circle_marker_8eaa6bb25c58eacc000941630db2b8ab.bindPopup(popup_f750ec9867cfc5e053727f281c059ef6)
+        ;
+
+        
+    
+    
+            var circle_marker_950d88b2e30a1f840a36d5faa0609ca6 = L.circleMarker(
+                [-25.62573, -54.28597],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_3761245529fc0b90399c37fdb6abb464 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ca711014339bf674d45c40905981640 = $(`<div id="html_5ca711014339bf674d45c40905981640" style="width: 100.0%; height: 100.0%;"><b>Salero Selva Central</b><br>Tipo: OBJETIVO<br>Score: 95</div>`)[0];
+                popup_3761245529fc0b90399c37fdb6abb464.setContent(html_5ca711014339bf674d45c40905981640);
+            
+        
+
+        circle_marker_950d88b2e30a1f840a36d5faa0609ca6.bindPopup(popup_3761245529fc0b90399c37fdb6abb464)
+        ;
+
+        
+    
+    
+            var circle_marker_b613ba4f277e5d0522778e642d24d254 = L.circleMarker(
+                [-25.587192, -54.181625],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_6ad0b3f296b277ec2c51a5ea021ce519 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_88262e8eeb9cf794cce848e520c5ae45 = $(`<div id="html_88262e8eeb9cf794cce848e520c5ae45" style="width: 100.0%; height: 100.0%;"><b>Desembocadura A. Yacuy</b><br>Tipo: OBJETIVO<br>Score: 90</div>`)[0];
+                popup_6ad0b3f296b277ec2c51a5ea021ce519.setContent(html_88262e8eeb9cf794cce848e520c5ae45);
+            
+        
+
+        circle_marker_b613ba4f277e5d0522778e642d24d254.bindPopup(popup_6ad0b3f296b277ec2c51a5ea021ce519)
+        ;
+
+        
+    
+    
+            var circle_marker_fb63536f83e6c7d44b61aff8acef5919 = L.circleMarker(
+                [-25.67426, -54.28429],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_35aa494246b5ded614a02e5348192f0c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd57dbf88d1a219fbc0751b081b49484 = $(`<div id="html_cd57dbf88d1a219fbc0751b081b49484" style="width: 100.0%; height: 100.0%;"><b>Intersección Picada</b><br>Tipo: ACCESO<br>Score: 25</div>`)[0];
+                popup_35aa494246b5ded614a02e5348192f0c.setContent(html_cd57dbf88d1a219fbc0751b081b49484);
+            
+        
+
+        circle_marker_fb63536f83e6c7d44b61aff8acef5919.bindPopup(popup_35aa494246b5ded614a02e5348192f0c)
+        ;
+
+        
+    
+    
+            var circle_marker_dccc185947934c2c1962d988bce305d8 = L.circleMarker(
+                [-25.65665, -54.21073],
+                {"bubblingMouseEvents": true, "color": "#f39c12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_e44bb2e94e7a81b139f038d8ff278d49 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2d32b34895fd540db60d745491c343ec = $(`<div id="html_2d32b34895fd540db60d745491c343ec" style="width: 100.0%; height: 100.0%;"><b>Punto Avistaje 300m</b><br>Tipo: TRANSITO<br>Score: 70</div>`)[0];
+                popup_e44bb2e94e7a81b139f038d8ff278d49.setContent(html_2d32b34895fd540db60d745491c343ec);
+            
+        
+
+        circle_marker_dccc185947934c2c1962d988bce305d8.bindPopup(popup_e44bb2e94e7a81b139f038d8ff278d49)
+        ;
+
+        
+    
+    
+            var circle_marker_e55b40177516bd7bc3f843ddd990f0a7 = L.circleMarker(
+                [-25.67329, -54.26972],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_86ad4fe391aaad4f8341120b7ebbd2ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7097e4bfe072abf2ede12e5a49fedbbd = $(`<div id="html_7097e4bfe072abf2ede12e5a49fedbbd" style="width: 100.0%; height: 100.0%;"><b>Vadeo A. Sto. Domingo</b><br>Tipo: ACCESO<br>Score: 30</div>`)[0];
+                popup_86ad4fe391aaad4f8341120b7ebbd2ab.setContent(html_7097e4bfe072abf2ede12e5a49fedbbd);
+            
+        
+
+        circle_marker_e55b40177516bd7bc3f843ddd990f0a7.bindPopup(popup_86ad4fe391aaad4f8341120b7ebbd2ab)
+        ;
+
+        
+    
+    
+            var circle_marker_dc5fbbe175167e3a6634079abf202afa = L.circleMarker(
+                [-25.62832, -54.24978],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+        var popup_97ad02dce6d6a4338a0c2210a7ebb425 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca8f3ec200ddbe5a7394b825052933d9 = $(`<div id="html_ca8f3ec200ddbe5a7394b825052933d9" style="width: 100.0%; height: 100.0%;"><b>Cámara A. Sto. Domingo</b><br>Tipo: OBJETIVO<br>Score: 80</div>`)[0];
+                popup_97ad02dce6d6a4338a0c2210a7ebb425.setContent(html_ca8f3ec200ddbe5a7394b825052933d9);
+            
+        
+
+        circle_marker_dc5fbbe175167e3a6634079abf202afa.bindPopup(popup_97ad02dce6d6a4338a0c2210a7ebb425)
+        ;
+
+        
+    
+    
+            ant_path_81479a719cd222c88b8f30adc92fc238 = L.polyline.antPath(
+              [[-25.56347, -54.29574], [-25.62573, -54.28597], [-25.62832, -54.24978], [-25.587192, -54.181625], [-25.587602, -54.230119], [-25.56347, -54.29574]],
+              {
+  "stroke": true,
+  "color": "#2c3e50",
+  "weight": 5,
+  "opacity": 0.5,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+10,
+20,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "#2c3e50",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 1800,
+  "pulseColor": "white",
+}
+        ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+            var poly_line_32baf64a6199fd5f7bde6dc5fd4bf8f2 = L.polyline(
+                [[-25.56347, -54.29574], [-25.62573, -54.28597], [-25.62832, -54.24978], [-25.587192, -54.181625], [-25.587602, -54.230119], [-25.56347, -54.29574]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0, "smoothFactor": 1.0, "stroke": true, "weight": 0}
+            ).addTo(map_3afb3b37dea336e785046ce758a1319d);
+        
+    
+            poly_line_32baf64a6199fd5f7bde6dc5fd4bf8f2.setText(
+                "      \u27a4      ",
+                {
+  "repeat": true,
+  "center": false,
+  "below": false,
+  "offset": 7,
+  "orientation": 0,
+  "attributes": {
+  "fill": "#2c3e50",
+  "font-weight": "bold",
+  "font-size": "18",
+},
+}
+            );
+        
+</script>
+</html>
