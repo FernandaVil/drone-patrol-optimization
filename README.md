@@ -8,7 +8,7 @@ Este proyecto aplica técnicas de **Investigación Operativa** y **Teoría de Gr
 
 ![Demo Ruta Optima](./assets/demo_mision_iguazu.gif)
 
-*Visualización de la ruta óptima resolviendo el 'Orienteering Problem'. El algoritmo prioriza 'Hotspots' (rojo) y descarta nodos de bajo valor (gris) para cumplir con la autonomía de 40 minutos.*
+*Visualización de la ruta óptima resolviendo el 'Orienteering Problem'. El algoritmo prioriza 'Hotspots' (rojo) y descarta nodos de bajo valor para cumplir con la autonomía de 40 minutos.*
 
 ## Contexto y problemática: La lucha contra la caza furtiva
 El Parque Nacional Iguazú enfrenta constantes amenazas de caza furtiva. Los cazadores utilizan puntos estratégicos conocidos como **saleros** (afloramientos minerales donde los animales acuden a lamer el suelo) y **picadas** (senderos rudimentarios abiertos en la selva) para sus actividades ilegales. 
