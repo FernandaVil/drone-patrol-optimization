@@ -71,10 +71,10 @@ Aunque el solver MIP fue más rápido, es importante notar que su función objet
 ## Impacto y conclusiones de la Etapa 1
 El modelo logró generar un plan de vuelo operativo que valida el uso de drones en el sector. Las conclusiones principales son:
 
-* **De lo imposible a lo táctico:** Transformamos una misión fallida (TSP) en una operación viable seleccionando inteligentemente los objetivos.
+* **De lo imposible a lo táctico:** Transformamos una misión fallida (TSP) en una operación viable seleccionando inteligentemente los objetivos
 * **Superioridad del análisis global:** El solver MIP ahorró casi 1.6 minutos de batería adicionales frente al Greedy al encontrar una secuencia de visita más fluida
-* **Seguridad operativa:** Se garantiza matemáticamente el retorno a la base (Seccional Apepú), eliminando el riesgo de aterrizajes forzosos en la selva.
-* **Validación de algoritmos:** Comprobamos que para grafos pequeños (10 nodos), una heurística bien diseñada puede competir con solvers complejos, aunque el MIP es necesario para garantizar optimidad en escalas mayores.
+* **Seguridad operativa:** Se garantiza matemáticamente el retorno a la base (Seccional Apepú), eliminando el riesgo de aterrizajes forzosos en la selva
+* **Validación de algoritmos:** Comprobamos que para grafos pequeños (10 nodos), una heurística bien diseñada puede competir con solvers complejos, aunque el MIP es necesario para garantizar optimidad en escalas mayores
 
 Este repositorio está diseñado para ser leído de forma secuencial. Los notebooks contienen una narrativa técnica extendida, justificaciones matemáticas y el código fuente documentado paso a paso.
 
