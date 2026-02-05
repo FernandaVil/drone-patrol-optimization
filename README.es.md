@@ -10,6 +10,8 @@ Este proyecto aplica técnicas de **Investigación Operativa** y **Teoría de Gr
 
 *Visualización de la ruta óptima resolviendo el 'Orienteering Problem'. El algoritmo prioriza 'Hotspots' (rojo) y descarta nodos de bajo valor para cumplir con la autonomía de 40 minutos.*
 
+---
+
 ## Contexto y problemática: La lucha contra la caza furtiva
 El Parque Nacional Iguazú enfrenta constantes amenazas de caza furtiva. Los cazadores utilizan puntos estratégicos conocidos como **saleros** (afloramientos minerales donde los animales acuden a lamer el suelo) y **picadas** (senderos rudimentarios abiertos en la selva) para sus actividades ilegales. 
 
@@ -78,6 +80,8 @@ El modelo logró generar un plan de vuelo operativo que valida el uso de drones 
 
 Este repositorio está diseñado para ser leído de forma secuencial. Los notebooks contienen una narrativa técnica extendida, justificaciones matemáticas y el código fuente documentado paso a paso.
 
+---
+
 ## Cómo ejecutar este proyecto localmente
 
 ### 1. Requisitos previos
@@ -114,6 +118,7 @@ Este proyecto utiliza `PySCIPOpt`, que requiere la instalación del solver **SCI
       ├── requirements.txt
       └── README.md
    ```
+---
 ## Próximos pasos: Etapa 2 - Complejidad dinámica
 Esta primera etapa resolvió la planificación estática (Offline). La siguiente fase del proyecto, actualmente en diseño, abordará la realidad cambiante de la selva:
 
@@ -122,6 +127,9 @@ Esta primera etapa resolvió la planificación estática (Offline). La siguiente
 * Riesgo de terreno (Rij​): No es lo mismo volar sobre un sendero que sobre selva virgen. Incorporaremos una matriz de costos de riesgo para penalizar trayectorias donde la recuperación del equipo sería imposible.
 
 * Función multiobjetivo: Refinaremos el algoritmo MIP para que no solo maximice el puntaje, sino que minimice el tiempo de vuelo como objetivo secundario, para garantizar matemáticamente siempre la ruta más rápida ante múltiples opciones de igual puntaje (evitando soluciones sub-óptimas en escenarios más complejos).
+
+---
+
 ## Referencias y fuentes de consulta
 Para asegurar la validez técnica del modelo de optimización y la precisión de los cálculos geoespaciales, se consultaron las siguientes fuentes:
 
