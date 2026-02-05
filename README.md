@@ -131,7 +131,6 @@ This first stage addressed static planning (Offline). The next phase of the proj
 To ensure the technical validity of the optimization model and the precision of the geospatial calculations, the following sources were consulted:
 
 * **Orienteering Problem:** Gunawan, A., Lau, H. C., & Vansteenwegen, P. (2016). *Orienteering Problem: A survey of recent variants, solution approaches and applications*. European Journal of Operational Research. [DOI: 10.1016/j.ejor.2016.04.059](https://doi.org/10.1016/j.ejor.2016.04.059)
-* **Subtour Elimination Constraints (MTZ):** Miller, C. E., Tucker, A. W., & Zemlin, R. A. (1960). *Integer Programming Formulation of Traveling Salesman Problems*. Journal of the ACM (JACM). (Mathematical foundation for the sequence constraints used in this project).
 * **Spherical Distance Calculation (Haversine):** Sinnott, R. W. (1984). *Virtues of the Haversine*. Sky and Telescope. (Mathematical basis for geodesic distance measurements in the Apepú Sector).
 * **Cartography and Regional Context:**
     * Data obtained by cross-referencing information from the **National Geographic Institute (IGN Argentina)** and Iguazú National Park patrol reports.
